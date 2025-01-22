@@ -1,0 +1,240 @@
+/* Custom.css v2.0.2 */
+/* Nový design stránky s přidáním stylů formuláře a tlačítek */
+
+/* Body */
+html {
+  font-size: 62.5%;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  max-width: 100%; /* Umožní roztáhnutí obsahu na celou šířku */
+  margin: 20px 0; /* Zarovnání doleva */
+  color: #333333;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left; /* Explicitní zarovnání textu doleva */
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: left; /* Zarovnání nadpisů doleva */
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  text-align: left; /* Zarovnání odstavců doleva */
+}
+
+a {
+  text-decoration: underline;
+  background: yellowgreen;
+  color: #2980b9;
+}
+a:hover {
+  color: #1abc9c;
+}
+
+a:visited {
+  color: #8e44ad;
+}
+
+ul {
+  padding-left: 1.8em;
+  margin-bottom: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.8em;
+}
+
+blockquote {
+  padding: 15px 20px;
+  border-left: 5px solid #3498db;
+  background-color: #f8f9fa;
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* Pre and Code */
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+code {
+  font-size: 1rem;
+  padding: 2px 6px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  background-color: #fdfdfd;
+  text-align: left; /* Explicitní zarovnání tabulek doleva */
+}
+
+td, th {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  text-align: left; /* Explicitní zarovnání buněk tabulky doleva */
+}
+
+th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+/* Buttons and Forms */
+.button, button, input[type="submit"], input[type="reset"], input[type="button"] {
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #3498db;
+  color: #ffffff;
+  border: 1px solid #2980b9;
+  border-radius: 25px; /* Moderní zaoblený vzhled */
+  cursor: pointer;
+}
+
+.button:hover, button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
+  background-color: #1abc9c;
+  border-color: #16a085;
+}
+
+textarea, select, input {
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 25px; /* Moderní zaoblené okraje */
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+  background-color: #f1f1f1;
+}
+
+textarea:focus, select:focus, input:focus {
+  border-color: #3498db;
+  outline: none;
+  background-color: #ffffff;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Přidání stylů pro nové formulářové prvky */
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-group .icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.input-group input {
+  padding-left: 40px; /* Rezerva pro ikony */
+}
+
+.input-group .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #3498db;
+  cursor: pointer;
+}
+
+.btn-edit{
+  width: 100px;
+  background: lightcyan;
+  text-align: center;
+  color: black;
+  border-radius: 10px;
+}
+
+.kontejner{
+  align-content: space-between !important;
+  padding: 0;
+}
+
+.card-body{
+      flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    min-width: 450px;
+    max-height: 500px;
+}
+
+.unvisible{
+  border: 0;
+  color: transparent;
+}
+
+.table{
+  align-content: center;
+}
+
+.obrazek{
+  max-width: 50px !important;
+}

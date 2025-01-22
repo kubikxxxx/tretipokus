@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% from "macros/fields.html" import render_input_field, render_submit %}
+
+{% block title %}Formulář{% endblock %}
+
+{% block content %}
+  <div class="container d-flex kontejner">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="mb-0">Log In</h3>
+        <a href="/formular" class="btn btn-custom">add new person</a>
+      </div>
+      <div class="card-body">
+        <form method="POST" id='login-form'>
+          {{ form.hidden_tag() }}
+          {{ render_input_field(form.name, lc="col-sm-3", rc="col-sm-9") }}
+          {{ render_input_field(form.surename, lc="col-sm-3", rc="col-sm-9") }}
+          <div class="form-group row">
+            <div class="col-sm-9 offset-sm-3">
+              {{ render_submit(cls="btn btn-primary") }}
+            </div>
+          </div>
+        </form>
+        {% if message %}
+          <div class="alert alert-info mt-3" role="alert">
+            {{ message }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="card mt-5">
+      <div class="card-header">
+        <h3 class="mb-0">People list</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>Name</th>
+              <th>Surname</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+              <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.surename }}</td>
+                <td class="unvisible">
+                  <a href="{{ url_for('routes.edit_user', user_id=user.user_id) }}" class="btn btn-edit btn-sm">Edit</a>
+                  <a href="{{ url_for('routes.delete_user', user_id=user.user_id) }}" class="btn btn-delete btn-sm"><img class="obrazek"
+                          src="https://cdn-icons-png.flaticon.com/512/1214/1214926.png " alt="delete-icon"></a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

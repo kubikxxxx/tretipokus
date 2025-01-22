@@ -1,0 +1,74 @@
+{# Form helper macros for generating forms with optional WTForms integration #}
+
+{% macro render_errors(errors) %}
+  {# Render error messages if present #}
+  {% if errors %}
+    <div class="alert alert-danger">
+      {% for error in errors %}
+        <p class="form-error">{{ error }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro render_input(name, value, label=None, type="text", disabled=False, readonly=False, errors=None, lc="col-sm-2", rc="col-sm-10") %}
+  {# Render an input field with optional label and error handling #}
+  <div class="form-group row">
+    {% if label and type != "hidden" %}
+      <label class="{{ lc }} col-form-label" for="{{ name }}">{{ label }}</label>
+    {% endif %}
+    <div class="{{ rc }}">
+      <input id="{{ name }}" type="{{ type }}" name="{{ name }}" value="{{ value|e }}"
+             class="{{ 'btn btn-primary' if type in ['submit', 'button'] else 'form-control' }}"
+             {% if readonly %}readonly{% endif %}
+             {% if disabled %}disabled{% endif %}>
+      {{ render_errors(errors) }}
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro render_checkbox(name, checked, label=None, disabled=False, errors=None, lc="form-check-label", rc="col-sm-10 offset-sm-2") %}
+  {# Render a checkbox with optional label and error handling #}
+  <div class="form-group row">
+    <div class="{{ rc }}">
+      <div class="form-check">
+        <input id="{{ name }}" type="checkbox" name="{{ name }}" value="on"
+               class="form-check-input"
+               {% if checked %}checked{% endif %}
+               {% if disabled %}disabled{% endif %}>
+        {% if label %}
+          <label class="{{ lc }}" for="{{ name }}">{{ label }}</label>
+        {% endif %}
+      </div>
+      {{ render_errors(errors) }}
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro render_input_field(field, lc="col-sm-2", rc="col-sm-10", disabled=False, readonly=False) %}
+  {# Render an input field for a WTForms field #}
+  <div class="form-group">
+    {{ render_input(field.name, field.data or "", field.label.text, errors=field.errors, lc=lc, rc=rc, disabled=disabled, readonly=readonly) }}
+  </div>
+{% endmacro %}
+
+{% macro render_password_field(field, lc="col-sm-2", rc="col-sm-10", disabled=False, readonly=False) %}
+  {# Render a password input field for a WTForms field #}
+  <div class="form-group">
+    {{ render_input(field.name, "", field.label.text, type="password", errors=field.errors, lc=lc, rc=rc, disabled=disabled, readonly=readonly) }}
+  </div>
+{% endmacro %}
+
+{% macro render_checkbox_field(field, lc="form-check-label", rc="col-sm-10 offset-sm-2", disabled=False) %}
+  {# Render a checkbox field for a WTForms field #}
+  <div class="form-group">
+    {{ render_checkbox(field.name, field.data or False, field.label.text, errors=field.errors, lc=lc, rc=rc, disabled=disabled) }}
+  </div>
+{% endmacro %}
+
+{% macro render_submit(cls="btn btn-success") %}
+  {# Render a submit button #}
+  <div class="mb-3">
+    <input type="submit" class="{{ cls }}">
+  </div>
+{% endmacro %}
